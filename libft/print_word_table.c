@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_error.c                                     :+:      :+:    :+:   */
+/*   print_word_table.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 18:55:27 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/05 18:05:37 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/05 17:45:13 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/05 17:47:28 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-static char error_str[128][128] = {
-    {"ALL IS OK"},
-    {" OLDPWD not set\n"}
-};
-
-void    manage_error(int error_code)
+void	print_word_table(char **tab)
 {
-    if (error_code < 128)
-        ft_putstr_fd(error_str[error_code], 2);
+	int		i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+		ft_putendl(tab[i++]);
 }

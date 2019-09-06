@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_error.c                                     :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 18:55:27 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/05 18:05:37 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/05 18:11:35 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/05 18:47:22 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char error_str[128][128] = {
-    {"ALL IS OK"},
-    {" OLDPWD not set\n"}
-};
-
-void    manage_error(int error_code)
+int	ft_echo(char *str)
 {
-    if (error_code < 128)
-        ft_putstr_fd(error_str[error_code], 2);
+	char	*opt;
+	int		ret;
+
+	opt = NULL;
+	if ((ret = ft_getopt(str, ECHO_OPT, &opt)))
+		return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 09:31:33 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/03 19:14:35 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:48:21 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ t_list				*ft_lst_at(t_list	**blst, unsigned int n);
 void				ft_lst_reverse(t_list **blst);
 t_list				*ft_lst_find(t_list **blst, void *data_ref, int (*cmp)());
 int					ft_lst_size(t_list *lst);
+void				print_word_table(char **tab);
 
 #endif

@@ -65,6 +65,7 @@ SRC=	ft_atoi.c\
 	ft_lst_find.c\
 	ft_lst_size.c\
 	get_next_line.c\
+	print_word_table.c
 
 OBJ= $(SRC:.c=.o)
 
