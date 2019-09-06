@@ -6,7 +6,7 @@
 #    By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 13:17:50 by temehenn          #+#    #+#              #
-#    Updated: 2019/09/03 19:15:27 by temehenn         ###   ########.fr        #
+#    Updated: 2019/09/06 16:49:48 by temehenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,11 @@ SRCDIR = src
 OBJDIR = obj
 FLAGS= -Wall -Wextra -Werror -g
 SRCFILE = 	main.c \
-			manage_error.c 
+			manage_error.c \
+			ft_getopt.c\
+			echo.c\
+			free_tab.c\
+			copy_tab.c
 
 SRC = $(addprefix $(SRCDIR), $(SRCFILE))
 OBJFILE = $(SRCFILE:.c=.o)

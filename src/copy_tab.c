@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   copy_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 19:16:54 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:12:13 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/06 16:42:56 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/06 16:53:24 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef 	ERROR_H
-# define 	ERROR_H
-# define	EOLDPWDM    1
-# define	EMALLOC		2
-# define	EINVOPT		3
-# define	ENULLPARAM	4
-# define	ECOMNF		5
+#include "minishell.h"
 
+char	**copy_tab(char **tab)
+{
+	char	**copy;
+	int		i;
 
-
-void	print_builtin_error(char *builtin_name, char *error_cause);
-
-#endif
+	copy = NULL;
+	i = 0;
+	if (!tab)
+		return (NULL);
+	while (tab[i])
+			i++;
+	if (!(copy = ft_memalloc(sizeof(char *) * i + 1)))
+		return (NULL);
+	ft_bzero(copy, sizeof(char *) * i + 1);
+	i = -1;
+	while (tab[++i])
+		if (!(copy[i] = ft_strdup(tab[i])))
+			return (NULL);
+	return (copy);
+}

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   detect_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 19:16:54 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:12:13 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/06 16:13:11 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/06 16:14:39 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef 	ERROR_H
-# define 	ERROR_H
-# define	EOLDPWDM    1
-# define	EMALLOC		2
-# define	EINVOPT		3
-# define	ENULLPARAM	4
-# define	ECOMNF		5
+#include "minishell.h"
 
+static char	builtin[6][10] = {
+	{ "echo" },
+	{ "cd" },
+	{ "env" },
+	{ "setenv" },
+	{ "unsetenv" },
+	{ NULL }
+};
 
-
-void	print_builtin_error(char *builtin_name, char *error_cause);
-
-#endif
+int			detect_command(char **env, char *command)
+{
+	
+}

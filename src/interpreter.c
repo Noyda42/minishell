@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   interpreter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 18:11:35 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:12:40 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/06 15:54:09 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/06 16:35:47 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_echo(char **tab)
+static void	free_tabs(char **env_cp, char **av)
 {
-	int	index;
+	free_tab(env_cp);
+	free_tab(av);
+}
 
-	if (!tab)
-	{
-		print_builtin_error("echo", NULL);
+int			interpreter(char **env, char *line)
+{
+	char	**av; //free
+	int		ac;
+	char	**env_cp; //free
+
+	if (!env || !line)
 		return (ENULLPARAM);
+	if (!(env_cp = copy_tab(env)) || !(av = ft_strsplit(line, " ")))
+	{
+		free_tabs(env_cp, av);
+		return (EMALLOC);
 	}
-	index = 0;
-	while (tab[++index])
-		ft_putstr(tab[index]);
-	write(1, "\n", 1);
-	return (0);
+	if (detect_command(env, av[0]) == FALSE)
+	{
+		return (ECOMNF);
+	}
 }
