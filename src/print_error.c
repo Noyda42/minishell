@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 16:43:04 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 19:50:26 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/05 18:25:38 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/09 19:11:42 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "minishell.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	print_error(char *func_name, char *error_cause)
 {
-	if (alst)
+	if (func_name)
 	{
-		(*del)((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		ft_putstr_fd(func_name, 2);
+		ft_putstr_fd(": ", 2);
+	}
+	if (!error_cause)
+		return ;
+	else
+	{
+		ft_putstr_fd(error_cause, 2);
+		ft_putstr_fd(": ", 2);
 	}
 }

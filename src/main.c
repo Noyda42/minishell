@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:38:26 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:54:00 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/09 20:42:32 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,27 @@ static int	minishell(int ac, char **av, char **env)
 {
 	char    *line;
     int		ret;
-	char	**cp_env;
+	t_list	*env_list;
 
     line = NULL;
 	ret = 0;
-	if (!(cp_env = copy_tab(env)))
-		return (EMALLOC);
 	ac = 2;
 	av = 0;
+	if (!(env_list = create_env_list(env)))
+		return (EMALLOC);
     // while (1)
     // {
     //     write(1, "$>", 2);
-    //     if (get_next_line(0, &line) >= 0)
+    //     if ((ret = get_next_line(0, &line) >= 0))
     //     {
     //         if ((ret = interpreter(env, line)) > 0)
     //             manage_error(ret);
 	// 		ft_memdel(&line);
-    //     }
+	// 	}
+	// 	else if (ret < 0)
+    //             manage_error(ret);
     // }
-	print_word_table(cp_env);
+	print_env(env_list);
 	return (0);
 }
 

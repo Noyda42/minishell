@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   print_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 16:43:04 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 19:50:26 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/09 20:18:45 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/09 21:16:37 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "minishell.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	print_env(t_list *env)
 {
-	if (alst)
+	t_list	*tmp;
+
+	tmp = env;
+	if (tmp)
+		print_env(tmp->next);
+	if (tmp)
 	{
-		(*del)((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		ft_putstr(((t_env*)tmp->content)->name);
+		ft_putstr("=");
+		ft_putendl(((t_env*)tmp->content)->content);
 	}
 }

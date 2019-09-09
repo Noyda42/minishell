@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_builtin_name_error.c                         :+:      :+:    :+:   */
+/*   print__error.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:25:38 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/05 18:32:27 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/09 20:56:16 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_builtin_error(char *builtin_name, char *error_cause)
+void	print_error(char *func_name, char *error_cause)
 {
-	if (builtin_name)
+	if (func_name)
 	{
-		ft_putstr_fd(builtin_name, 2);
+		ft_putstr_fd(func_name, 2);
 		ft_putstr_fd(": ", 2);
 	}
 	if (!error_cause)

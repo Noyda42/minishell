@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 15:54:09 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:35:47 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/09 19:18:45 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static void	free_tabs(char **env_cp, char **av)
 int			interpreter(char **env, char *line)
 {
 	char	**av; //free
+	int		ret;
 	int		ac;
 	char	**env_cp; //free
 
+	ret = 0;
 	if (!env || !line)
 		return (ENULLPARAM);
 	if (!(env_cp = copy_tab(env)) || !(av = ft_strsplit(line, " ")))
@@ -31,8 +33,9 @@ int			interpreter(char **env, char *line)
 		free_tabs(env_cp, av);
 		return (EMALLOC);
 	}
-	if (detect_command(env, av[0]) == FALSE)
+	if ((ret = detect_command(env, av[0])))
 	{
-		return (ECOMNF);
+		print_error("Interpreter", av[0]);
+		return (ret);
 	}
 }

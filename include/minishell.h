@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:36:32 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:55:21 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/09 20:55:36 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,20 @@ typedef	struct	s_option
 	int			optind;
 }				t_option;
 
+typedef struct	s_env
+{
+	char		*name;
+	char		*content;
+}				t_env;
+
+
 int			ft_getopt(int ac, char **av, const char *opt_ref, t_option *opt);
 void    	manage_error(int error_code);
 void		free_tab(char **tab);
 char		**copy_tab(char **tab);
 int			ft_echo(char **tab);
-void		print_builtin_error(char *builtin_name, char *error_cause);
-
+void		*free_elem_env_lst(t_env *env, size_t size);
+t_list		*create_env_list(char **env);
+void		print_env(t_list *env);
 
 #endif
