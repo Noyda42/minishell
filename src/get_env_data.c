@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   get_env_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 16:22:16 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/10 16:59:01 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/10 17:18:18 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/10 17:25:15 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tab(char **tab)
+char	*get_env_content(t_list *env, char *env_name)
 {
-	int	i;
+	t_list *tmp;
 
-	i = -1;
-	if (!tab)
-		return ;
-	while (tab[++i])
-		ft_memdel((void **)&tab[i]);
-	tab = NULL;
-}
-
-void	free_elem_env_lst(void *env, size_t size)
-{
-	if (!env)
-		return ;
-	size = sizeof(t_env);
-	ft_strdel(&(((t_env *)((t_list *)env)->content)->name));
-	ft_strdel(&(((t_env *)((t_list *)env)->content)->content));
-	env = NULL;
+	tmp = env;
+	if (!env || !env_name)
+		return (NULL);
+	while (tmp)
+	{
+		if (!ft_strcmp(env_name, ((t_env *)tmp->content)->name))
+			return (((t_env *)tmp->content)->content);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

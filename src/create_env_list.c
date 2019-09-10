@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:34:02 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 21:14:28 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:46:11 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_list		*create_env_list(char **env)
 	{
 		if ((fill_env_list(env[i], &result)))
 		{
-			//ft_lstdel(&result, free_elem_env_lst);
+			ft_lstdel(&result, free_elem_env_lst);
 			return (NULL);
 		}
 		i++;

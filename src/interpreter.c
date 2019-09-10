@@ -6,36 +6,39 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 15:54:09 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 19:18:45 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:15:32 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	free_tabs(char **env_cp, char **av)
+static int	init_interpreter(char ***av, int *ac, int *ret, char *line)
 {
-	free_tab(env_cp);
-	free_tab(av);
+	*ret = 0;
+	*ac = 0;
+	*av = 0;
+	if (!(av = ft_strsplit(line, ' ')))
+	{
+		free_tab(av);
+		return (EMALLOC);
+	}
+	return (0);
 }
 
-int			interpreter(char **env, char *line)
+int			interpreter(t_list *env, char *line)
 {
 	char	**av; //free
 	int		ret;
 	int		ac;
-	char	**env_cp; //free
 
-	ret = 0;
 	if (!env || !line)
 		return (ENULLPARAM);
-	if (!(env_cp = copy_tab(env)) || !(av = ft_strsplit(line, " ")))
-	{
-		free_tabs(env_cp, av);
-		return (EMALLOC);
-	}
+	if ((ret = init_interpreter(&av, &ac, &ret, line)))
+		return(ret);
 	if ((ret = detect_command(env, av[0])))
 	{
 		print_error("Interpreter", av[0]);
 		return (ret);
 	}
+	return (1);
 }

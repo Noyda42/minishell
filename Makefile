@@ -6,7 +6,7 @@
 #    By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 13:17:50 by temehenn          #+#    #+#              #
-#    Updated: 2019/09/09 20:45:08 by temehenn         ###   ########.fr        #
+#    Updated: 2019/09/10 17:00:35 by temehenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCFILE = 	main.c \
 			copy_tab.c\
 			print_error.c\
 			create_env_list.c\
-			print_env.c
+			print_env.c\
+			interpreter.c
 
 SRC = $(addprefix $(SRCDIR), $(SRCFILE))
 OBJFILE = $(SRCFILE:.c=.o)

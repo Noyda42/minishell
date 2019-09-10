@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 16:13:11 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 19:24:27 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/10 17:36:39 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,37 @@ static int	is_builtin(char *command)
 	return (FALSE);
 }
 
-static int	is_in_binary_path(char **env, char *command)
+static int	is_in_binary_path(t_list *env, char *command)
 {
-	if ()
+	char	**split_path;
+	t_list	*bin_paths;
+	int		i;
+
+	i = 0;
+	split_path = NULL;
+	if (!(bin_paths = get_env_content(env, command)))
+		return (FALSE);
+	if (!(split_path = ft_strsplit(bin_paths, ":")))
+		return (FALSE);
+	while (split_path[i])
+	{
+		if (is_in_dir(command, split_path[i] == TRUE))
+		{
+			free_tab(split_path);
+			return (TRUE);
+		}
+		i++;
+	}
+	free_tab(split_path);
+	return (FALSE);
 }
 
-int			detect_command(char **env, char *command)
+int			detect_command(t_list *env, char *command)
 {
 	if (!env || !command)
 		return (ENULLPARAM);
-	if (is_builtin(command) == FALSE
-		|| is_in_binary_path(env, command) == FALSE)
+	if (is_builtin(command) != TRUE
+		|| is_in_binary_path(env, command) != TRUE)
 		return (ECOMMANDNF);
 	return (TRUE);
 }
