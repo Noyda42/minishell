@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 16:38:23 by temehenn          #+#    #+#             */
-/*   Updated: 2018/11/09 18:06:50 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/21 11:19:57 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char			*fill_tab(char const **s, char c, char *tab)
 
 	i = 0;
 	j = 0;
-	while ((*s)[i] != c)
+	while ((*s)[i] != c && (*s)[i])
 		i++;
 	if (!(tab = ft_strnew(i)))
 		return (NULL);
@@ -64,11 +64,11 @@ char				**ft_strsplit(char const *s, char c)
 	if (!s || !c)
 		return (NULL);
 	word = count_word(s, c);
-	if (!(tab = malloc(sizeof(char *) * word + 1)))
+	if (!(tab = malloc(sizeof(char *) * (word + 1))))
 		return (NULL);
 	while (*s)
 	{
-		while (*s == c && *s)
+		while (*s && *s == c)
 			s++;
 		if (*s)
 		{

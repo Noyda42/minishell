@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 19:16:54 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/11 18:30:33 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/21 15:27:32 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define	EACCES			7
 # define	EOPNDIR			8
 # define	EBADF			9
-
+# define	EHOMENS			10
+# define	EDOLLEXP		11
 void	print_error(char *func_name, char *error_cause);
 
 #endif
