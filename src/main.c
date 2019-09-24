@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:38:26 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/18 18:18:31 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/24 18:27:48 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ static int	minishell(char **env)
         write(1, "$>", 2);
         if ((ret = get_next_line(0, &line) >= 0))
         {
-            if ((ret = interpreter(env_list, line)) > 0)
+            if ((ret = interpreter(&env_list, line)) > 0)
                 manage_error(ret);
 			ft_strdel(&line);
+			print_env(env_list);
 		}
 		else if (ret < 0)
                 manage_error(ret);

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   unsetenv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 18:11:35 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 18:11:22 by temehenn         ###   ########.fr       */
+/*   Created: 2019/09/24 19:01:11 by temehenn          #+#    #+#             */
+/*   Updated: 2019/09/24 19:05:16 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_echo(t_list **env, char **arg)
-{
-	int	index;
 
-	(void)env;
-	if (!arg)
-	{
-		print_error("echo", NULL);
-		return (ENULLPARAM);
-	}
-	index = 0;
-	while (arg[++index])
-	{
-		ft_putstr(arg[index]);
-		ft_putstr(" ");
-	}
-	write(1, "\n", 1);
+int	ft_unsetenv(t_list **env, char **arg)
+{
+	t_list	*tmp;
+
+	tmp = NULL;
+	if (!arg[1])
+		return (0);
+	if ((tmp = find_component(env, arg[1])))
+		free_elem_env_lst(tmp, sizeof(t_env));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 18:28:26 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/21 16:29:22 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/24 19:11:37 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 static t_builtin	*init_builtin(t_builtin *builtin)
 {
 	ft_memcpy(builtin[0].name, "echo", 4);
+	ft_memcpy(builtin[1].name, "setenv", 6);
+	ft_memcpy(builtin[2].name, "unsetenv", 8);
 	builtin[0].buitlin = ft_echo;
+	builtin[1].buitlin = ft_setenv;
+	builtin[2].buitlin = ft_unsetenv;
 	return (builtin);
 }
 
-static int exec_builtin(t_list *env, char **av)
+static int exec_builtin(t_list **env, char **av)
 {
 	t_builtin	*builtin;
 	int			i;
@@ -38,14 +42,14 @@ static int exec_builtin(t_list *env, char **av)
 			ret = builtin[i].buitlin(env, av);
 			break ;
 		}
+		i++;
 	}
 	ft_memdel((void **)&builtin);
 	return (ret);
 }
 
-int	exec_command(t_list *env, char **av)
+int	exec_command(t_list **env, char **av)
 {
-	puts(av[0]);
 	if (!is_builtin(av[0]))
 		return (exec_builtin(env, av));
 	return (ECOMMANDNF);	
