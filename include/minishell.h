@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:36:32 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 19:00:55 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/30 19:15:25 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct	s_buitlin
 {
-	char		name[8];
+	char		name[16];
 	int			(*buitlin)(t_list **, char **);
 }				t_builtin;
 
@@ -60,5 +60,6 @@ int			dollar_expansion(t_list *env, char **av);
 t_list		*find_component(t_list *env, char *env_name);
 int			ft_setenv(t_list **env, char **arg);
 int			ft_unsetenv(t_list **env, char **arg);
+
 
 #endif

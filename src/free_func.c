@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 16:22:16 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 19:25:31 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/09/30 19:59:14 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ void	free_tab(char **tab)
 
 void	free_elem_env_lst(void *env, size_t size)
 {
+	t_env *tmp;
+
+	tmp = ((t_list *)env)->content;
 	if (!env)
 		return ;
 	size = sizeof(t_env);
-	ft_strdel(&(((t_env *)((t_list *)env)->content)->name));
-	ft_strdel(&(((t_env *)((t_list *)env)->content)->content));
+	ft_strdel(&(tmp->name));
+	ft_strdel(&(tmp->name));
 }
