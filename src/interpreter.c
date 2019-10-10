@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 15:54:09 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 18:28:33 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:17:10 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int			interpreter(t_list **env, char *line)
 	int		ac;
 
 	// print_env(env);
-	if (!env)
-		return (ENULLPARAM);
 	if (!ft_strcmp(line, ""))
 		return (0);
 	if ((ret = init_interpreter(&av, &ac, &ret, line)))

@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 17:01:04 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 19:22:46 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:09:49 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ t_list	*add_env_component(t_list **env, char **arg)
 		return (NULL);
 	if (!(((t_env*)new->content)->name = ft_strdup(arg[1])))
 		return (NULL);
-	if (!(((t_env*)new->content)->content = ft_strdup(arg[2])))
-		return (NULL);
+	if (arg[2])
+	{
+		if (!(((t_env*)new->content)->content = ft_strdup(arg[2])))
+			return (NULL);
+	}
+	else
+		if (!(((t_env*)new->content)->content = ft_strdup("")))
+			return (NULL);
 	if (*env)
 		ft_lstadd(env, new);
 	else
@@ -49,6 +55,8 @@ int	ft_setenv(t_list **env, char **arg)
 	t_list *tmp;
 
 	tmp = NULL;
+	if (!arg[1])
+		return (0);
 	if ((tmp = find_component(*env, arg[1])))
 	{
 		ft_strdel(&((t_env *)tmp->content)->content);
@@ -63,8 +71,7 @@ int	ft_setenv(t_list **env, char **arg)
 				return (EMALLOC);
 		}
 	}
-	else
-		if ((add_env_component(env, arg)))
+	else if ((add_env_component(env, arg)))
 			return (EMALLOC);
 	return (0); 
 }

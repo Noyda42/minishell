@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 11:43:16 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/21 16:02:46 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:36:22 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int			apply_expansion(t_list *env, char ***av)
 			if ((ret = dollar_expansion(env, &((*av)[i]))))
 				return (ret);
 		}
-		if ((*av)[i][0] == '~' && (*av)[i][1] == '/')
+		if (((*av)[i][0] == '~' && (*av)[i][1] == '\0')
+			|| ((*av)[i][0] == '~' && (*av)[i][1] == '/'))
 		{
 			if ((ret = tilde_expansion(env, &((*av)[i]))))
 				return (ret);

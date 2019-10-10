@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/24 17:01:04 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/24 17:36:02 by temehenn         ###   ########.fr       */
+/*   Created: 2019/10/10 18:39:10 by temehenn          #+#    #+#             */
+/*   Updated: 2019/10/10 18:52:27 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ t_list	*add_env_component(t_list **env, char **arg)
 int	setenv(t_list *env, char **arg)
 {
 	t_list *tmp;
-
+	
+	if (arg[1] == NULL)
+		return (0);
 	if ((tmp = find_component(env, arg[1])))
 	{
 		ft_strdel(((t_env *)tmp->content)->name);
