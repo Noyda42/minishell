@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 19:16:54 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/21 15:27:32 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/16 19:09:13 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define	EBADF			9
 # define	EHOMENS			10
 # define	EDOLLEXP		11
+# define	EPATHTL			12
+# define	ECDFAIL			13
 void	print_error(char *func_name, char *error_cause);
 
 #endif
