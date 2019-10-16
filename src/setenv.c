@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 18:39:10 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/10 18:52:27 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/16 21:34:22 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list	*add_env_component(t_list **env, char **arg)
 	if (!(((t_env*)new->content)->content = ft_strdup(arg[2])))
 		return (EMALLOC);
 	if (*env)
-		ft_lstadd(lst, new);
+		ft_lstadd(env, new);
 	else
 		*env = new;
 	return (0);
