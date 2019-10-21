@@ -6,18 +6,19 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 16:13:11 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/10 19:20:20 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:14:04 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	builtin[6][10] = {
+static char	builtin[7][10] = {
 	{ "echo" },
 	{ "cd" },
 	{ "env" },
 	{ "setenv" },
 	{ "unsetenv" },
+	{ "exit" },
 	{ 0 }
 };
 
@@ -26,7 +27,7 @@ int	is_builtin(char *command)
 	int	i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 6)
 	{
 		if (!ft_strcmp(command, builtin[i]))
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:34:02 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/10 16:46:11 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/21 17:48:52 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ t_list		*create_env_list(char **env)
 		}
 		i++;
 	}
+	if (!result)
+		if (update_pwd(&result))
+			return (NULL);
 	return (result);
 }

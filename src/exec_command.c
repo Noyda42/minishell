@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 18:28:26 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/16 17:30:43 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:14:28 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ static t_builtin	*init_builtin(t_builtin *builtin)
 	ft_memcpy(builtin[1].name, "setenv", 6);
 	ft_memcpy(builtin[2].name, "unsetenv", 9);
 	ft_memcpy(builtin[3].name, "cd", 3);
+	ft_memcpy(builtin[4].name, "exit", 5);
 	builtin[0].buitlin = ft_echo;
 	builtin[1].buitlin = ft_setenv;
 	builtin[2].buitlin = ft_unsetenv;
 	builtin[3].buitlin = ft_cd;
+	builtin[4].buitlin = ft_exit;
 	return (builtin);
 }
 

@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:36:32 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/16 17:37:10 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:03:47 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_env
 	char		*content;
 }				t_env;
 
+int			update_pwd(t_list **env);
 int			ft_getopt(int ac, char **av, const char *opt_ref, t_option *opt);
 void    	manage_error(int error_code);
 void		free_tab(char **tab);
@@ -60,5 +61,6 @@ int			ft_setenv(t_list **env, char **arg);
 int			ft_unsetenv(t_list **env, char **arg);
 int			ft_cd(t_list **env, char **arg);
 int			ft_echo(t_list **env, char **arg);
+int			ft_exit(t_list **env, char **arg);
 
 #endif

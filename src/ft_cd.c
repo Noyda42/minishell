@@ -6,46 +6,61 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 17:27:57 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/16 21:59:00 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/21 17:57:58 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	update_pwd(t_list **env)
+int	update_pwd(t_list **env)
 {
-	t_list *tmp;
+	char	**tab;
 
-	tmp = *env;
-	while (tmp)
+	if (!(tab = (char **)malloc(sizeof(char *) * 4)))
+		return (EMALLOC);
+	ft_bzero(tab, sizeof(char *) * 4);
+	if (!(tab[0] = ft_strdup("setenv")) || !(tab[1] = ft_strdup("PWD")) || !(tab[2] = ft_strnew(8192)))
+		return (EMALLOC);
+	if (!getcwd(tab[2], 8191))
 	{
-		if (!ft_strcmp("PWD", ((t_env *)tmp->content)->name))
-		{
-			ft_strdel(&((t_env *)tmp->content)->content);
-			if (!(((t_env *)tmp->content)->content = ft_strnew(8192)))
-				return (EMALLOC);
-			getcwd(((t_env *)tmp->content)->content, 8192);
-		}
-		tmp = tmp->next;
+		free_tab(tab);
+		return (EPATHTL);
 	}
+	ft_setenv(env, tab);
+	free_tab(tab);
 	return (0);
 }
 
 static int	update_old_pwd(t_list **env)
 {
 	char	**tab;
+	char	*tmp;
 
+	tab = NULL;
 	if (!(tab = (char **)malloc(sizeof(char *) * 4)))
 		return (EMALLOC);
-	ft_bzero(tab, sizeof(char *) * 3);
+	if ((tmp = get_env_content(*env, "PWD")))
+	{
+		if (!(tab[2] = ft_strdup(tmp)))
+		{
+			free_tab(tab);
+			return (EMALLOC);
+		}
+	}
+	else
+		return (0);	
+	ft_bzero(tab, sizeof(char *) * 4);
 	if (!(tab[0] = ft_strdup("setenv")) || !(tab[1] = ft_strdup("OLDPWD")) || !(tab[2] = ft_strdup(get_env_content(*env, "PWD"))))
+	{
+		free_tab(tab);
 		return (EMALLOC);
+	}
 	ft_setenv(env, tab);
 	free_tab(tab);
 	return (0);
 }
 
-static int	update_directory(t_list **env, const char *arg)
+static int	update_directory(const char *arg)
 {
 	char	*new_pwd;
 
@@ -59,10 +74,8 @@ static int	update_directory(t_list **env, const char *arg)
 	new_pwd = ft_strcat(new_pwd, arg);
 	if (chdir(new_pwd))
 		return (ECDFAIL);
-	if (update_old_pwd(env))
-		return (EMALLOC);
 	ft_strdel(&new_pwd);
-	return (update_pwd(env));
+	return (0);
 }
 
 int			ft_cd(t_list **env, char **arg)
@@ -85,10 +98,9 @@ int			ft_cd(t_list **env, char **arg)
 		if (chdir(arg[1]))
 			return (ECDFAIL);
 	}
-	else if ((ret = update_directory(env, arg[1])))
+	else if ((ret = update_directory(arg[1])))
 	 	return (ret);
-	else if (ret != 0) 
-		if (update_old_pwd(env))
-			return(EMALLOC);
+	if (update_old_pwd(env) || update_pwd(env))
+			return (EMALLOC);
 	return (0);	
 }
