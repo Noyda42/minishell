@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:55:27 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/16 19:09:54 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/22 19:11:41 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static char error_str[128][128] = {
     {"$ expansion : syntax error.\n"},
 	{"cd expansion: path too long\n"},
 	{"cd expansion: can't access to this directory.\n"},
+	{"Fork fail.\n"},
+	{"Wait fail.\n"},
 };
 
 void    manage_error(int error_code)

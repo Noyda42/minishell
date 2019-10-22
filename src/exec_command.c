@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 18:28:26 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/21 18:14:28 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/22 19:33:15 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,26 @@ static int exec_builtin(t_list **env, char **av)
 
 int	exec_command(t_list **env, char **av)
 {
+	pid_t	son;
+	char	**env_tab;
+	int		status;
+
+	status = 1;
 	if (!is_builtin(av[0]))
 		return (exec_builtin(env, av));
-	return (ECOMMANDNF);	
+	else
+	{	
+		if (!(env_tab = envlst_to_envtab(*env)))
+			return (EMALLOC);
+		if ((son = fork()) == -1)
+			return (EFORKFAIL);
+		if (son)
+			if (wait(&status) != son)
+			return (EWAITFAIL);
+		if (!son)
+			if (execve(av[0], av, env_tab) == -1)
+				exit(0);
+		free_tab(env_tab);
+	}
+	return (0);	
 }

@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:36:32 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/21 18:03:47 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/10/22 18:47:21 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int			ft_unsetenv(t_list **env, char **arg);
 int			ft_cd(t_list **env, char **arg);
 int			ft_echo(t_list **env, char **arg);
 int			ft_exit(t_list **env, char **arg);
+char		**envlst_to_envtab(t_list *env);
 
 #endif
