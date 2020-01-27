@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 16:22:16 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 16:54:28 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:36:00 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	free_tab(char **tab)
 	i = -1;
 	if (!tab)
 		return ;
-	while (tab[++i])
+	while (tab[++i]) {
 		ft_memdel((void **)&tab[i]);
+	}
 	tab = NULL;
 }

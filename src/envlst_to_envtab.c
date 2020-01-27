@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 18:30:09 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/22 19:01:35 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:41:27 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static char **fill_tab(t_list *env, char **new)
 		i--;
 		tmp = tmp->next;
 	}
+	new[ft_lst_size(env)] = NULL;
 	return (new);
 }
 
@@ -39,6 +40,8 @@ char		**envlst_to_envtab(t_list *env)
 {
 	char	**new;
 
+	if (!env)
+		return (NULL);
 	new = NULL;
 	if (!(new = ft_memalloc(sizeof(char *) * ft_lst_size(env) + 1)))
 		return (NULL);

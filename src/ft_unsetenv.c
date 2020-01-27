@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 19:01:11 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/30 20:06:26 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/01/27 19:11:02 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	remove_link(t_list **env, char *arg)
 		if (!ft_strcmp(((t_env *)current->content)->name, arg))
 		{
 			prev->next = current->next;
-			free_elem_env_lst(current, sizeof(t_env));
+			free_elem_env_lst(current->content, sizeof(t_env));
 			free(current);
 			return ;
 		}
@@ -44,7 +44,7 @@ int			ft_unsetenv(t_list **env, char **arg)
 	if (!ft_strcmp(((t_env *)prev->content)->name, arg[1]))
 	{
 		*env = (*env)->next;
-		free_elem_env_lst(prev, sizeof(t_env));
+		free_elem_env_lst(prev->content, sizeof(t_env));
 		free(prev);
 		return (0);
 	}

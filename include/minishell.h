@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:36:32 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/22 18:47:21 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:35:44 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		free_tab(char **tab);
 char		**copy_tab(char **tab);
 void		free_elem_env_lst(void *env, size_t size);
 t_list		*create_env_list(char **env);
-void		print_env(t_list *env);
+int			print_env(t_list *env);
 int			interpreter(t_list **env, char *line);
 char		*get_env_content(t_list *env, char *env_name);
 int			is_in_dir(char *path, char **command);
@@ -63,5 +63,6 @@ int			ft_cd(t_list **env, char **arg);
 int			ft_echo(t_list **env, char **arg);
 int			ft_exit(t_list **env, char **arg);
 char		**envlst_to_envtab(t_list *env);
+int			ft_env(t_list **env, char **arg);
 
 #endif

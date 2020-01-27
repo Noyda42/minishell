@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 19:16:54 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/22 19:11:54 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:38:03 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define	ECDFAIL			13
 # define	EFORKFAIL		14
 # define	EWAITFAIL		15
+# define	EBADOPT			16
 void	print_error(char *func_name, char *error_cause);
 
 #endif

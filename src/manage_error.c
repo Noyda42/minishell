@@ -6,7 +6,7 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:55:27 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/22 19:11:41 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:38:31 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char error_str[128][128] = {
 	{"cd expansion: can't access to this directory.\n"},
 	{"Fork fail.\n"},
 	{"Wait fail.\n"},
+	{"Bad option.\n"},
 };
 
 void    manage_error(int error_code)

@@ -6,16 +6,18 @@
 /*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 20:18:45 by temehenn          #+#    #+#             */
-/*   Updated: 2019/10/10 19:38:14 by temehenn         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:36:17 by temehenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_list *env)
+int	print_env(t_list *env)
 {
 	t_list	*tmp;
 
+	if (!env)
+		return (ENULLPARAM);
 	tmp = env;
 	if (tmp)
 		print_env(tmp->next);
@@ -25,4 +27,5 @@ void	print_env(t_list *env)
 		ft_putstr("=");
 		ft_putendl(((t_env*)tmp->content)->content);
 	}
+	return (0);
 }

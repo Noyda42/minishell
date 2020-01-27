@@ -6,7 +6,7 @@
 #    By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 13:17:50 by temehenn          #+#    #+#              #
-#    Updated: 2019/10/22 18:45:12 by temehenn         ###   ########.fr        #
+#    Updated: 2019/12/01 16:37:50 by temehenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCFILE = 	main.c \
 			ft_setenv.c\
 			ft_cd.c\
 			ft_exit.c\
-			envlst_to_envtab.c
+			envlst_to_envtab.c\
+			env.c
 
 SRC = $(addprefix $(SRCDIR), $(SRCFILE))
 OBJFILE = $(SRCFILE:.c=.o)
