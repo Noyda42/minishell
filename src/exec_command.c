@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 18:28:26 by temehenn          #+#    #+#             */
-/*   Updated: 2020/01/25 14:44:51 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:38:28 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <sys/types.h>
+#include <sys/wait.h>
 
 static t_builtin	*init_builtin(t_builtin *builtin)
 {
@@ -29,7 +31,7 @@ static t_builtin	*init_builtin(t_builtin *builtin)
 	return (builtin);
 }
 
-static int exec_builtin(t_list **env, char **av)
+static int			exec_builtin(t_list **env, char **av)
 {
 	t_builtin	*builtin;
 	int			i;
@@ -54,7 +56,7 @@ static int exec_builtin(t_list **env, char **av)
 	return (ret);
 }
 
-int	exec_command(t_list **env, char **av)
+int					exec_command(t_list **env, char **av)
 {
 	pid_t	son;
 	char	**env_tab;
@@ -69,12 +71,13 @@ int	exec_command(t_list **env, char **av)
 		if ((son = fork()) == -1)
 			return (EFORKFAIL);
 		if (son)
+		{
 			if (wait(&status) != son)
 				return (EWAITFAIL);
+			free_tab(&env_tab);
+		}
 		if (!son)
-			if (execve(av[0], av, env_tab) == -1)
-				exit(0);
-		free_tab(env_tab);
+			execve(av[0], av, env_tab);
 	}
-	return (0);	
+	return (0);
 }

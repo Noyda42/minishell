@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unsetenv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 19:01:11 by temehenn          #+#    #+#             */
-/*   Updated: 2020/01/27 19:11:02 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 11:12:14 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 static void	remove_link(t_list **env, char *arg)
 {

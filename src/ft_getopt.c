@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_getopt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:35:56 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/06 14:34:38 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:30:12 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	int	is_valid_opt(char *tested_opt, const char *opt_ref, t_option *opt)
 	return (TRUE);
 }
 
-static	int malloc_opt(int ac, char **av, const char *opt_ref, t_option *opt)
+static int	malloc_opt(int ac, char **av, const char *opt_ref, t_option *opt)
 {
 	int	endopt;
 	int	size;
@@ -75,7 +75,7 @@ static void	fill_opt(char **av, t_option *opt)
 				opt->opt[pos++] = av[i][j];
 			j++;
 		}
-		i++;	
+		i++;
 	}
 }
 

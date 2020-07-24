@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_expansion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 15:56:39 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/21 16:16:51 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/15 12:50:38 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ int			dollar_expansion(t_list *env, char **av)
 		return (EMALLOC);
 	if ((ret = substitute_var(env, av, split)))
 	{
-		free_tab(split);
+		free_tab(&split);
 		return (ret);
 	}
 	if ((ret = fill_substitute(av, split)))
 	{
-		free_tab(split);
+		free_tab(&split);
 		return (ret);
 	}
+	free_tab(&split);
 	return (0);
 }

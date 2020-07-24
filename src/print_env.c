@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 20:18:45 by temehenn          #+#    #+#             */
-/*   Updated: 2019/12/02 18:36:17 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 16:10:22 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_env(t_list *env)
 	t_list	*tmp;
 
 	if (!env)
-		return (ENULLPARAM);
+		return (0);
 	tmp = env;
 	if (tmp)
 		print_env(tmp->next);

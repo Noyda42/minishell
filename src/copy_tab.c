@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 16:42:56 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/09 19:30:47 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:41:44 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**copy_tab(char **tab)
 	if (!tab)
 		return (NULL);
 	while (tab[i])
-			i++;
+		i++;
 	if (!(copy = ft_memalloc(sizeof(char *) * i + 1)))
 		return (NULL);
 	ft_bzero(copy, sizeof(char *) * i + 1);

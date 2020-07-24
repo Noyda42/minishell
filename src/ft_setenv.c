@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 17:01:04 by temehenn          #+#    #+#             */
-/*   Updated: 2020/01/27 19:01:15 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:41:09 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ t_list	*add_env_component(t_list **env, char **arg)
 		if (!(((t_env*)new->content)->content = ft_strdup(arg[2])))
 			return (NULL);
 	}
-	else
-		if (!(((t_env*)new->content)->content = ft_strdup("")))
-			return (NULL);
+	else if (!(((t_env*)new->content)->content = ft_strdup("")))
+		return (NULL);
 	if (*env)
 		ft_lstadd(env, new);
 	else
@@ -50,7 +49,7 @@ t_list	*add_env_component(t_list **env, char **arg)
 	return (0);
 }
 
-int	ft_setenv(t_list **env, char **arg)
+int		ft_setenv(t_list **env, char **arg)
 {
 	t_list *tmp;
 
@@ -65,13 +64,12 @@ int	ft_setenv(t_list **env, char **arg)
 			if (!(((t_env *)tmp->content)->content = ft_strdup(arg[2])))
 				return (EMALLOC);
 		}
-		else
+		else if (!(((t_env *)tmp->content)->content = ft_strdup("")))
 		{
-			if (!(((t_env *)tmp->content)->content = ft_strdup("")))
-				return (EMALLOC);
+			return (EMALLOC);
 		}
 	}
 	else if ((add_env_component(env, arg)))
-			return (EMALLOC);
-	return (0); 
+		return (EMALLOC);
+	return (0);
 }

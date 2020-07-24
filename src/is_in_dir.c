@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_in_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 17:36:20 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/17 17:57:11 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 11:09:30 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int			is_in_dir(char *path, char **command)
 	if (!(stream = opendir(path)))
 		return (EOPNDIR);
 	if ((ret = browse_dir(path, command, stream)))
+	{
+		closedir(stream);
 		return (ret);
+	}
+	closedir(stream);
 	return (0);
 }

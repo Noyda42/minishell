@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: temehenn <temehenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noyda <noyda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 16:38:23 by temehenn          #+#    #+#             */
-/*   Updated: 2019/09/21 11:19:57 by temehenn         ###   ########.fr       */
+/*   Updated: 2020/07/14 11:41:15 by noyda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static size_t		count_word(char const *s, char c)
 {
@@ -58,8 +59,8 @@ char				**ft_strsplit(char const *s, char c)
 	size_t		word;
 	char		**tab;
 	size_t		i;
+	char		*tmp;
 
-	tab = NULL;
 	i = 0;
 	if (!s || !c)
 		return (NULL);
@@ -72,8 +73,9 @@ char				**ft_strsplit(char const *s, char c)
 			s++;
 		if (*s)
 		{
-			tab[i] = fill_tab(&s, c, tab[i]);
-			i++;
+			tmp = fill_tab(&s, c, tab[i]);
+			if (tmp)
+				tab[i++] = tmp;
 		}
 	}
 	if (tab)
